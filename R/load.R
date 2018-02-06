@@ -373,14 +373,14 @@ loadBACICountriesInfoPanel <- function() {
 #'
 #' @export
 
-loadBACIExportsPanel <- function(hs_rev_year) {
+loadBACIExportsPanel <- function(input_year) {
 
     col_classes <- c("integer", "character", "character", "character",  "numeric", "numeric")
     col_names <- c("year", "product", "country_id", "destination_id", "export_val", "export_quantity")
 
     raw_panel <- c()
-    initYear <- as.integer(hs_rev_year) - 2
-    finYear <- as.integer(hs_rev_year)
+    initYear <- input_year - 2
+    finYear <- input_year
     for (year_tag in as.character(initYear:finYear)) {
 
         data_file_name <- paste0("baci12_", year_tag, ".csv")
@@ -517,7 +517,7 @@ loadExportsPanel <- function(name, hs_rev_year, hs_digits, input_year, ab_flag) 
 
         ## Note that if we choose BACI data we ignore hs_rev_year here.
 
-        raw_exports_panel <- loadBACIExportsPanel()
+        raw_exports_panel <- loadBACIExportsPanel(input_year)
 
     }
 
